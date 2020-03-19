@@ -161,6 +161,9 @@ endif
 ifeq ($(BR2_PACKAGE_GDB_PYTHON),y)
 GDB_CONF_OPTS += --with-python=$(TOPDIR)/package/gdb/gdb-python-config
 GDB_DEPENDENCIES += python
+else ifeq ($(BR3_PACKAGE_GDB_PYTHON),y)
+GDB_CONF_OPTS += --with-python=$(TOPDIR)/package/gdb/gdb-python3-config
+GDB_DEPENDENCIES += python3
 else
 GDB_CONF_OPTS += --without-python
 endif
@@ -238,6 +241,9 @@ endif
 ifeq ($(BR2_PACKAGE_HOST_GDB_PYTHON),y)
 HOST_GDB_CONF_OPTS += --with-python=$(HOST_DIR)/bin/python2
 HOST_GDB_DEPENDENCIES += host-python
+else ifeq ($(BR2_PACKAGE_HOST_GDB_PYTHON3),y)
+HOST_GDB_CONF_OPTS += --with-python=$(HOST_DIR)/bin/python3
+HOST_GDB_DEPENDENCIES += host-python3
 else
 HOST_GDB_CONF_OPTS += --without-python
 endif
